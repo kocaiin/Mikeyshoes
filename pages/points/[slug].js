@@ -2,34 +2,64 @@ import React, { useState, useEffect } from 'react';
 import { pointsProducts } from '../../lib/points';
 import Points from '../../components/Points';
 
+const API_BASE = 'http://localhost/shoesEcomerce/api';
+
 export default function PointsProductDetails({ product }) {
   const [index, setIndex] = useState(0);
   const [points, setPoints] = useState(0);
+  // 新增：获取当前用户信息
+  const [user, setUser] = useState(null);
 
   // Load user's current points
   useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (!storedUser) {
+      setPoints(0);
+      return;
+    }
+    setUser(storedUser);
+
     async function loadPoints() {
-      const res = await fetch('/api/get-points');
+      // 修改：携带user_id请求积分
+      const res = await fetch(`${API_BASE}/get-points.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id: storedUser.id })
+      });
       const data = await res.json();
       setPoints(data.points || 0);
     }
     loadPoints();
   }, []);
 
-  // Redeem function (same logic as points.js)
+  // Redeem function (修改：携带user_id和产品信息)
   async function redeem() {
-    const res = await fetch('/api/buy-with-points', {
+    if (!user) {
+      alert('请先登录！');
+      return;
+    }
+    // 注意：你的数据里product.price是金额，product.points是积分成本，这里按原逻辑用price（若要改points需调整）
+    const cost = product.price; // 或 product.points
+    const res = await fetch(`${API_BASE}/buy-with-points.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ cost: product.price }), 
-      // Use product.price or product.points — your data uses both but price = points cost
+      body: JSON.stringify({ 
+        user_id: user.id, 
+        cost: cost,
+        product: { // 传递产品信息，用于生成purchase_items
+          name: product.name,
+          price: cost, // 积分成本作为价格
+          quantity: 1,
+          image: product.images[0]
+        }
+      }),
     });
 
     const data = await res.json();
     alert(data.message);
 
     if (data.ok) {
-      setPoints(prev => prev - product.price);
+      setPoints(prev => prev - cost);
     }
   }
 
@@ -85,7 +115,6 @@ export default function PointsProductDetails({ product }) {
           </div>
       </div>
     </div>
-    
   );
 }
 

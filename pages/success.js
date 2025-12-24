@@ -9,11 +9,16 @@ const Success = () => {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
   
   useEffect(() => {
-    localStorage.clear();
     setCartItems([]);
-    setTotalPrice(0);
-    setTotalQuantities(0);
-    runFireworks();
+        setTotalPrice(0);
+        setTotalQuantities(0);
+        
+        // 可选：如果购物车状态存在localStorage，这里也清空购物车的localStorage（根据你的实际逻辑）
+        // localStorage.removeItem('cartItems');
+        // localStorage.removeItem('totalPrice');
+        // localStorage.removeItem('totalQuantities');
+
+        runFireworks();
   }, []);
 
   return (

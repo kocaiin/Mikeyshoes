@@ -5,6 +5,7 @@ import { toast } from 'react-hot-toast';
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
+  const [showProfile, setShowProfile] = useState(false); 
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -121,6 +122,8 @@ export const StateContext = ({ children }) => {
       value={{
         showCart,
         setShowCart,
+        showProfile,
+        setShowProfile,
         cartItems,
         totalPrice,
         totalQuantities,

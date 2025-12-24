@@ -7,6 +7,8 @@ import toast from 'react-hot-toast';
 import { useStateContext } from '../context/StateContext';
 import { useRouter } from 'next/router';
 
+const API_BASE = 'http://localhost/shoesEcomerce/api';
+
 const Cart = () => {
   const cartRef = useRef();
   const router = useRouter();
@@ -17,34 +19,51 @@ const Cart = () => {
       toast.error('Add at least one item to buy.');
       return;
     }
-
-    const response = await fetch('/api/purchase', {
+  
+    // ✅ 关键：获取登录用户
+    const userStr = localStorage.getItem('user');
+    if (!userStr) {
+      toast.error('Please login first!');
+      router.push('/login');
+      return;
+    }
+  
+    const user = JSON.parse(userStr);
+    if (!user.id) {
+      toast.error('Invalid user info!');
+      router.push('/login');
+      return;
+    }
+  
+    const response = await fetch(`${API_BASE}/purchase.php`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        userId: user.id, // ✅ 这一行是关键
         items: cartItems.map((item) => ({
-          id: item._id,
           name: item.name,
           price: item.price,
           quantity: item.quantity,
-          image: item.images?.[0],
+          image: item.images?.[0] || null,
         })),
         total: totalPrice,
       }),
     });
-
+  
     if (!response.ok) {
-      toast.error('Could not save your order. Please try again.');
+      const err = await response.json();
+      console.error(err);
+      toast.error(err.message || 'Could not save your order.'); // ✅ 使用后端 message
       return;
     }
-
+  
     toast.success('Order saved!');
     setShowCart(false);
     router.push('/success');
   };
-
+  
   const renderCartImage = (item) => {
     if (Array.isArray(item.images) && item.images[0]) {
       return item.images[0];
@@ -95,7 +114,7 @@ const Cart = () => {
                     <span className="minus" onClick={() => toggleCartItemQuanitity(item._id, 'dec') }>
                     <AiOutlineMinus />
                     </span>
-                    <span className="num" onClick="">{item.quantity}</span>
+                    <span className="num">{item.quantity}</span>
                     <span className="plus" onClick={() => toggleCartItemQuanitity(item._id, 'inc') }><AiOutlinePlus /></span>
                   </p>
                   </div>

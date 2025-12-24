@@ -309,6 +309,7 @@ text-align: end;
   display: flex;
   gap: 10px;
 }
+
  .cart-heading{
   display: flex;
   align-items: center;
@@ -622,6 +623,564 @@ margin-top: 160px;
 .product-max-qty{
   margin-top: 10px;
 }
+/* ===== Nike Profile ===== */
+
+.nike-profile-mask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 200;
+}
+
+.nike-profile {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 380px;
+  height: 100%;
+  background: #fff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.35s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.nike-profile-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.nike-profile-header {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.nike-avatar {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin: auto;
+}
+
+.nike-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nike-avatar-upload {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: #000;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nike-avatar-save {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nike-profile-header h3 {
+  margin-top: 16px;
+  font-size: 20px;
+}
+
+.nike-profile-header p {
+  font-size: 14px;
+  color: #999;
+  letter-spacing: 1px;
+}
+
+.nike-profile-body {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nike-profile-body label {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.nike-profile-body input {
+  border: none;
+  border-bottom: 2px solid #ddd;
+  padding: 10px 4px;
+  font-size: 14px;
+}
+
+.nike-profile-body input:disabled {
+  background: transparent;
+}
+
+.nike-btn {
+  margin-top: 20px;
+  padding: 12px;
+  background: #000;
+  color: white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nike-outline-btn {
+  margin-top: 20px;
+  padding: 12px;
+  border: 2px solid #000;
+  background: transparent;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nike-danger-btn {
+  margin-top: auto;
+  padding: 12px;
+  background: #f02d34;
+  color: white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ===== Nike / Adidas Auth Style ===== */
+
+.nike-auth {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  background: #fff;
+}
+
+/* 左侧大字视觉 */
+.nike-auth-left {
+  background: #000;
+  color: white;
+  padding: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.nike-auth-left h1 {
+  font-size: 96px;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -2px;
+}
+
+.nike-auth-left h1 span {
+  color: #f02d34;
+}
+
+/* 右侧表单 */
+.nike-auth-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nike-card {
+  width: 100%;
+  max-width: 380px;
+}
+
+.nike-card h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: #000;
+}
+
+/* 浮动标签输入框 */
+.nike-input {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.nike-input input {
+  width: 100%;
+  padding: 14px 10px;
+  border: none;
+  border-bottom: 2px solid #ddd;
+  font-size: 16px;
+  background: transparent;
+  transition: border-color 0.3s ease;
+}
+
+.nike-input label {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 14px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.nike-input input:focus {
+  outline: none;
+  border-bottom-color: #000;
+}
+
+.nike-input input:focus + label,
+.nike-input input:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 12px;
+  color: #000;
+}
+
+/* 按钮 */
+.nike-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  background: #000;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.3s ease;
+}
+
+.nike-btn:hover {
+  background: #f02d34;
+}
+
+/* 切换 */
+.nike-switch {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #666;
+}
+
+.nike-switch a {
+  color: #000;
+  font-weight: 700;
+}
+
+.nike-switch a:hover {
+  color: #f02d34;
+}
+
+/* 响应式 */
+@media screen and (max-width: 900px) {
+  .nike-auth {
+    grid-template-columns: 1fr;
+  }
+
+  .nike-auth-left {
+    display: none;
+  }
+
+  .nike-card {
+    padding: 40px 20px;
+  }
+}
+
+/* ===== Nike Orders ===== */
+
+.nike-orders-page {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.nike-orders-page h1 {
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 40px;
+  letter-spacing: -1px;
+}
+
+/* Loading */
+.nike-page-loading {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* Empty */
+.nike-empty {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.nike-empty p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.nike-empty button {
+  padding: 14px 30px;
+  background: #000;
+  color: white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Orders */
+.nike-orders {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.nike-order-card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 24px;
+  background: #fff;
+}
+
+/* Header */
+.nike-order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.nike-order-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.nike-order-header span {
+  font-size: 12px;
+  color: #999;
+}
+
+.nike-order-total {
+  font-size: 18px;
+  font-weight: 900;
+  color: #f02d34;
+}
+
+/* Items */
+.nike-order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nike-order-item {
+  display: grid;
+  grid-template-columns: 70px 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.nike-order-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f2f2f2;
+}
+
+.nike-order-item .info h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.nike-order-item .info p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.nike-order-item .price {
+  font-weight: 800;
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+  .nike-order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nike-order-item {
+    grid-template-columns: 60px 1fr;
+  }
+
+  .nike-order-item .price {
+    justify-self: end;
+  }
+}
+/* ===== Nike Admin Orders ===== */
+
+.nike-admin-page {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.nike-admin-page h1 {
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+/* Orders */
+.nike-admin-orders {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.nike-admin-order-card {
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 28px;
+  background: #fff;
+}
+
+/* Header */
+.nike-admin-order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nike-admin-order-header h3 {
+  margin: 0;
+  font-weight: 900;
+}
+
+.nike-admin-order-header span {
+  font-size: 12px;
+  color: #999;
+}
+
+.admin-total {
+  font-size: 20px;
+  font-weight: 900;
+  color: #f02d34;
+}
+
+/* User */
+.nike-admin-user {
+  margin: 20px 0;
+  padding: 16px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.nike-admin-user .address {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Items */
+.nike-admin-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nike-admin-item {
+  display: grid;
+  grid-template-columns: 70px 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.nike-admin-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #eee;
+}
+
+.nike-admin-item h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.nike-admin-item p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.nike-admin-item .price {
+  font-weight: 800;
+}
+
+/* Actions */
+.nike-admin-actions {
+  margin-top: 24px;
+  text-align: right;
+}
+
+.nike-admin-actions .danger {
+  background: #111;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.nike-admin-actions .danger:hover {
+  background: #f02d34;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .nike-admin-order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nike-admin-item {
+    grid-template-columns: 60px 1fr;
+  }
+
+  .nike-admin-item .price {
+    justify-self: end;
+  }
+}
 
 @media screen and (max-width:800px) {
   .hero-banner-container{
@@ -765,4 +1324,6 @@ margin-top: 160px;
   width: 300px;
   margin: auto;
 }
+/* 可放在全局样式文件（如styles/globals.css）中 */
+
 }
