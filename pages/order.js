@@ -81,7 +81,7 @@ export default function OrderPage() {
 
                     <div className="info">
                       <h4>{item.name}</h4>
-                      <p>Qty: {item.quantity}</p>
+                      <p>数量: {item.quantity}</p>
                     </div>
 
                     <div className="price">

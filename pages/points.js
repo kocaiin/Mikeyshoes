@@ -40,7 +40,7 @@ export default function PointsShop() {
     <div>
       <div className="products-heading">
         <h2>Points Shop</h2>
-        <p>Your Points: {points}</p>
+        <p>会员商店</p>
       </div>
 
       <div className="products-container">

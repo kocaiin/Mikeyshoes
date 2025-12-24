@@ -8,7 +8,7 @@ const Home = () => (
     <HeroBanner heroBanner={heroBanner}  />
     <div className="products-heading">
       <h2>畅销产品</h2>
-      <p>speaker There are many variations passages</p>
+      <p>Bestselling products</p>
     </div>
 
     <div className="products-container">

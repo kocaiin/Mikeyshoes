@@ -39,7 +39,7 @@ const Login = () => {
 
       <div className="nike-auth-right">
         <div className="nike-card">
-          <h2>Sign In</h2>
+          <h2>登录</h2>
 
           <form onSubmit={handleLogin}>
             <div className="nike-input">

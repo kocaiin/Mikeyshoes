@@ -5,8 +5,10 @@
 
 header('Content-Type: application/json; charset=utf-8');
 
-// Allow Next.js dev/build (any port) to call these APIs
-header('Access-Control-Allow-Origin: *');
+// CORS with credentials support
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : 'http://localhost';
+header("Access-Control-Allow-Origin: $origin");
+header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 
@@ -42,3 +44,4 @@ try {
     exit;
 }
 
+?>

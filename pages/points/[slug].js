@@ -86,10 +86,10 @@ export default function PointsProductDetails({ product }) {
         <div className="product-detail-desc">
           <h1>{product.name}</h1>
 
-          <h4>Your Points:</h4>
-          <p className="price">{points}</p>
+          <h4>你的积分:</h4>
+          <p className="price">{points} Points</p>
 
-          <h4>Points Required:</h4>
+          <h4>需要积分:</h4>
           <p className="price">{product.price} Points</p>
 
           <div className="buttons">
@@ -99,7 +99,7 @@ export default function PointsProductDetails({ product }) {
               onClick={redeem}
               disabled={points < product.price}
             >
-              {points < product.price ? 'Not Enough Points' : 'Redeem'}
+              {points < product.price ? '积分不足' : '兑换'}
             </button>
           </div>
         </div>
